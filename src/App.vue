@@ -4,14 +4,15 @@
   <button type="button" @click="start" :disabled="isPlaying">Play</button>
   <!-- the block component should show based on the delay time -->
   <Block v-if="isPlaying" :delay="delay" @end="endGame" />
-  <p v-if="showResult">Reaction Time: {{ score }}ms</p>
+  <Results v-if="showResult" :score="score" />
 </template>
 
 <script>
 import Block from './components/Block';
+import Results from './components/Results';
 export default {
   name: 'App',
-  components: { Block },
+  components: { Block, Results },
   data() {
     return {
       isPlaying: false,
